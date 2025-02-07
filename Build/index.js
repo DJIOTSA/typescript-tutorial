@@ -30,7 +30,12 @@ function sum(a, b) {
     return a + b;
 }
 console.log(sum(-1.545, 2234));
-const a = { username: "djiotsa", age: 123, email: "123@123.123", userName: () => name };
+const a = {
+    username: "djiotsa",
+    age: 123,
+    email: "123@123.123",
+    userName: () => name,
+};
 const { username, age, email } = a;
 console.log({ username, age, email });
 console.log(a.userName());
@@ -49,7 +54,7 @@ class MyClass {
 const User1 = new MyClass("John Doe", 123);
 console.log("User1 name is: ", User1.getName());
 // Array Methods
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8,];
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 console.log(numbers);
 // Add to the end of the array
 numbers.push(9);
@@ -136,21 +141,77 @@ function log(message) {
     console.log(message);
 }
 log("Hello world!");
-// Any and Unknown
-let data;
-data = 123;
-data = "Hello";
-data = true;
-data = { name: "John Doe", age: 123 };
-console.log(data);
-let value = data;
-console.log(value);
-let data1;
-data1 = 123;
-data1 = "Hello";
+// // Any and Unknown
+// let data: any;
+// data = 123;
+// data = "Hello";
+// data = true;
+// data = { name: "John Doe", age: 123 };
+// console.log(data);
+// let value: string = data;
+// console.log(value);
+// let data1: unknown;
+// data1 = 123;
+// data1 = "Hello";
 // // this will throw an error: Type 'unknown' is not assignable to type 'number'.
 // let value1: number = data1;
 // console.log(value1);
 // // this will not throw an error: Type 'unknown' is not assignable to type 'string'.
 // let value2: string = data1;
 // console.log(value2);
+// private, public, protected
+class Student {
+    name;
+    age;
+    email;
+    constructor(name, age, email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+    setName(name) {
+        this.name = name;
+    }
+    getName() {
+        return this.name;
+    }
+    getAge() {
+        return this.age;
+    }
+    getEmail() {
+        return this.email;
+    }
+    getNameLength() {
+        return this.name.length;
+    }
+}
+const student1 = new Student("John Doe", 123, "123@123.123");
+console.log(student1);
+console.log(student1.getName());
+console.log(student1.getAge());
+console.log(student1.getEmail());
+student1.setName("djiotsa");
+console.log(student1.getName());
+// this will throw an error: Property 'age' is protected and only accessible within class 'Student' and its subclasses.
+// student1.name= "toto";
+// student1.age = 123;
+student1.email = "123@123.123";
+console.log(student1.getName());
+console.log(student1.getAge());
+console.log(student1.getEmail());
+// this will throw an error: Property 'getNameLength' is private and only accessible within class 'Student'.
+// student1.getNameLength();
+// constructors
+class Person {
+    name;
+    age;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greeting() {
+        console.log(`Hello ${this.name}, you are ${this.age} years old`);
+    }
+}
+const person1 = new Person("dongmo", 10);
+person1.greeting();

@@ -49,10 +49,15 @@ interface Details {
   userName(): string;
 }
 
-const a: Details = { username: "djiotsa", age: 123, email: "123@123.123", userName: () => name };
+const a: Details = {
+  username: "djiotsa",
+  age: 123,
+  email: "123@123.123",
+  userName: () => name,
+};
 const { username, age, email } = a;
-console.log({username, age, email});
-console.log(a. userName());
+console.log({ username, age, email });
+console.log(a.userName());
 
 // Class
 class MyClass {
@@ -70,11 +75,10 @@ class MyClass {
 }
 
 const User1 = new MyClass("John Doe", 123);
-console.log("User1 name is: ",User1.getName());
-
+console.log("User1 name is: ", User1.getName());
 
 // Array Methods
-let numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8,];
+let numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 console.log(numbers);
 // Add to the end of the array
 numbers.push(9);
@@ -108,11 +112,17 @@ console.log(filteredFruits);
 // reduce an array
 let reducedNumbers: number = numbers.reduce((acc, number) => acc + number, 0);
 console.log(reducedNumbers);
-let reducedFruits: string = allFruits.reduce((acc, fruit) => acc + " " + fruit, "");
+let reducedFruits: string = allFruits.reduce(
+  (acc, fruit) => acc + " " + fruit,
+  ""
+);
 console.log(reducedFruits);
 let sumOfNumbers: number = numbers.reduce((acc, number) => acc + number, 0);
 console.log(sumOfNumbers);
-let maxNumber: number = numbers.reduce((acc, number) => Math.max(acc, number), 0);
+let maxNumber: number = numbers.reduce(
+  (acc, number) => Math.max(acc, number),
+  0
+);
 console.log(maxNumber);
 // foreach an array
 let foreachFruits: void = allFruits.forEach((fruit) => console.log(fruit));
@@ -123,7 +133,9 @@ console.log(foundFruit);
 let foundNumber: number = numbers.find((number) => number === 3);
 console.log(foundNumber);
 // findIndex an array
-let foundIndexFruit: number = allFruits.findIndex((fruit) => fruit === "banana");
+let foundIndexFruit: number = allFruits.findIndex(
+  (fruit) => fruit === "banana"
+);
 console.log(foundIndexFruit);
 
 // inheritance
@@ -142,7 +154,7 @@ class Child extends Parent {
   }
 
   sayName(): void {
-    console.log("Your name is ",this.name);
+    console.log("Your name is ", this.name);
   }
 }
 
@@ -171,20 +183,20 @@ function log(message: string): void {
 }
 log("Hello world!");
 
-// Any and Unknown
-let data: any;
-data = 123;
-data= "Hello";
-data= true;
-data= {name: "John Doe", age: 123};
-console.log(data);
+// // Any and Unknown
+// let data: any;
+// data = 123;
+// data = "Hello";
+// data = true;
+// data = { name: "John Doe", age: 123 };
+// console.log(data);
 
-let value: string = data;
-console.log(value);
+// let value: string = data;
+// console.log(value);
 
-let data1: unknown;
-data1 = 123;
-data1= "Hello";
+// let data1: unknown;
+// data1 = 123;
+// data1 = "Hello";
 
 // // this will throw an error: Type 'unknown' is not assignable to type 'number'.
 // let value1: number = data1;
@@ -192,3 +204,66 @@ data1= "Hello";
 // // this will not throw an error: Type 'unknown' is not assignable to type 'string'.
 // let value2: string = data1;
 // console.log(value2);
+
+// private, public, protected
+class Student {
+  private name: string;
+  protected age: number;
+  public email: string;
+
+  constructor(name: string, age: number, email: string) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+  }
+
+  setName(name: string): void {
+    this.name = name;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+
+  getAge(): number {
+    return this.age;
+  }
+
+  getEmail(): string {
+    return this.email;
+  }
+
+  private getNameLength(): number {
+    return this.name.length;
+  }
+}
+
+const student1 = new Student("John Doe", 123, "123@123.123");
+console.log(student1);
+console.log(student1.getName());
+console.log(student1.getAge());
+console.log(student1.getEmail());
+student1.setName("djiotsa");
+console.log(student1.getName());
+// this will throw an error: Property 'age' is protected and only accessible within class 'Student' and its subclasses.
+// student1.name= "toto";
+// student1.age = 123;
+student1.email = "123@123.123";
+console.log(student1.getName());
+console.log(student1.getAge());
+console.log(student1.getEmail());
+// this will throw an error: Property 'getNameLength' is private and only accessible within class 'Student'.
+// student1.getNameLength();
+
+// constructors
+
+class Person{
+  constructor(public name: string, public age: number){}
+
+  greeting(): void{
+    console.log(`Hello ${this.name}, you are ${this.age} years old`);
+  }
+}
+
+const person1 = new Person("dongmo", 10);
+person1.greeting();
