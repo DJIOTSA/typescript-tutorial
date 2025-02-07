@@ -215,3 +215,32 @@ class Person {
 }
 const person1 = new Person("dongmo", 10);
 person1.greeting();
+// Promises
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let data = "Data fetched successfully";
+            let error = "Error fetching data";
+            resolve(data);
+            reject(error);
+        }, 2000);
+    });
+}
+fetchData()
+    .then((data) => {
+    console.log("data received", data);
+})
+    .catch((error) => {
+    console.log("error", error);
+});
+// async, await
+async function fetchDataAsync() {
+    try {
+        let data = await fetchData();
+        console.log("data received", data);
+    }
+    catch (error) {
+        console.log("error", error);
+    }
+}
+fetchDataAsync();

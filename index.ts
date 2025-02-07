@@ -256,14 +256,45 @@ console.log(student1.getEmail());
 // student1.getNameLength();
 
 // constructors
+class Person {
+  constructor(public name: string, public age: number) {}
 
-class Person{
-  constructor(public name: string, public age: number){}
-
-  greeting(): void{
+  greeting(): void {
     console.log(`Hello ${this.name}, you are ${this.age} years old`);
   }
 }
 
 const person1 = new Person("dongmo", 10);
 person1.greeting();
+
+// Promises
+function fetchData(): Promise<string> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let data = "Data fetched successfully";
+      let error = "Error fetching data";
+      resolve(data);
+      reject(error);
+
+    }, 2000);
+  });
+}
+
+fetchData()
+  .then((data) => {
+    console.log("data received", data);
+  })
+  .catch((error) => {
+    console.log("error", error);
+  });
+
+// async, await
+async function fetchDataAsync() {
+  try {
+    let data = await fetchData();
+    console.log("data received", data);
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+fetchDataAsync();
