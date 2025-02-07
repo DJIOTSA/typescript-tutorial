@@ -97,3 +97,98 @@ console.log(allFruits);
 // Slice an array
 let slicedFruits: string[] = allFruits.slice(1, 3);
 console.log(slicedFruits);
+// Map an array
+let mappedFruits: string[] = allFruits.map((fruit) => fruit.toUpperCase());
+console.log(mappedFruits);
+let mappedNumbers: number[] = numbers.map((number) => number * number);
+console.log(mappedNumbers);
+// Filter an array
+let filteredFruits: string[] = allFruits.filter((fruit) => fruit.length > 5);
+console.log(filteredFruits);
+// reduce an array
+let reducedNumbers: number = numbers.reduce((acc, number) => acc + number, 0);
+console.log(reducedNumbers);
+let reducedFruits: string = allFruits.reduce((acc, fruit) => acc + " " + fruit, "");
+console.log(reducedFruits);
+let sumOfNumbers: number = numbers.reduce((acc, number) => acc + number, 0);
+console.log(sumOfNumbers);
+let maxNumber: number = numbers.reduce((acc, number) => Math.max(acc, number), 0);
+console.log(maxNumber);
+// foreach an array
+let foreachFruits: void = allFruits.forEach((fruit) => console.log(fruit));
+let foreachNumbers: void = numbers.forEach((number) => console.log(number));
+// find an array
+let foundFruit: string = allFruits.find((fruit) => fruit === "banana");
+console.log(foundFruit);
+let foundNumber: number = numbers.find((number) => number === 3);
+console.log(foundNumber);
+// findIndex an array
+let foundIndexFruit: number = allFruits.findIndex((fruit) => fruit === "banana");
+console.log(foundIndexFruit);
+
+// inheritance
+
+class Parent {
+  name: string;
+  setName(name: string): void {
+    this.name = name;
+  }
+}
+
+class Child extends Parent {
+  age: number;
+  setAge(age: number): void {
+    this.age = age;
+  }
+
+  sayName(): void {
+    console.log("Your name is ",this.name);
+  }
+}
+
+const name1 = new Child();
+name1.setName("djiotsa");
+name1.sayName();
+
+// Modules
+import { MyLogin } from "./login";
+import { MySignup } from "./signup";
+
+let newLogin = MyLogin.login();
+newLogin;
+let newSignup = MySignup.signup();
+newSignup;
+
+// explicit, annotations
+let a1: number = 123;
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+// void
+function log(message: string): void {
+  console.log(message);
+}
+log("Hello world!");
+
+// Any and Unknown
+let data: any;
+data = 123;
+data= "Hello";
+data= true;
+data= {name: "John Doe", age: 123};
+console.log(data);
+
+let value: string = data;
+console.log(value);
+
+let data1: unknown;
+data1 = 123;
+data1= "Hello";
+
+// // this will throw an error: Type 'unknown' is not assignable to type 'number'.
+// let value1: number = data1;
+// console.log(value1);
+// // this will not throw an error: Type 'unknown' is not assignable to type 'string'.
+// let value2: string = data1;
+// console.log(value2);
